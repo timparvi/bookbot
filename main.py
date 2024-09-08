@@ -1,8 +1,16 @@
 def main():
-    with open("books/frankenstein.txt") as f:
-        file_contents = f.read()
-        print(file_contents)
+    book_path = "books/frankenstein.txt"
+    text = get_book_text(book_path)
+    num_words = get_num_words(text)
+    print(num_words)
 
+def get_num_words(text):
+    words = text.split()
+    return len(words)
+
+def get_book_text(path):
+    with open(path) as f:
+        return f.read()
 
 if __name__ == '__main__':
     main()

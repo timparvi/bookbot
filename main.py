@@ -1,8 +1,32 @@
+from string import ascii_lowercase as low_letter
+
 def main():
     book_path = "books/frankenstein.txt"
     text = get_book_text(book_path)
     num_words = get_num_words(text)
-    print(num_words)
+    num_characters = get_num_characters(text)
+    report = get_report(num_words, num_characters)
+    print(report)
+
+def get_report(words, characters):
+    report =f"--- Begin report of books/frankenstein.txt ---\n {words} words found in the document\n"
+
+    #
+    # Missing logic for the character list!
+    #
+    #
+
+    report += "--- End report ---"
+    return report
+
+def get_num_characters(text):
+    text.lower()
+    lettersdict = {}
+    for letter in low_letter:
+        char_count = text.count(letter)
+        lettersdict.update({letter:char_count})
+    return lettersdict
+
 
 def get_num_words(text):
     words = text.split()

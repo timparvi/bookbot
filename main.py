@@ -9,15 +9,26 @@ def main():
     print(report)
 
 def get_report(words, characters):
-    report =f"--- Begin report of books/frankenstein.txt ---\n {words} words found in the document\n"
+    report ="--- Begin report of books/frankenstein.txt ---\n"
+    report +=f"{words} words found in the document\n\n"
 
-    #
-    # Missing logic for the character list!
-    #
-    #
+    # Sorting the dictionary
+    char_tuples = characters.items()
+    sorted_chars = sorted(char_tuples, key=lambda item: item[1], reverse=True)
+    sorted_char_dict = {k: v for k, v in sorted_chars}
 
-    report += "--- End report ---"
+
+    #Looping through the sorted dictionary
+    for char, times in sorted_char_dict.items():
+        sentence = f"The '{char}' character was found {times} times\n"
+        report += sentence
+
+    report += "\n--- End report ---"
+
     return report
+
+def char_sort(char):
+    return char["char_count"]
 
 def get_num_characters(text):
     text.lower()
